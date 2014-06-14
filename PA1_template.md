@@ -20,7 +20,7 @@ totalsteps = tapply(activity$steps, activity$date, sum)
 hist(totalsteps, main = "Histogram of total steps in a day", xlab = "Total Steps in a Day")
 ```
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2.png) 
+![plot of chunk TotalSteps](figures/Plot_1_fromChunk_TotalSteps.png) 
 
 ```r
 mean(totalsteps, na.rm = T)
@@ -47,7 +47,7 @@ plot(unique(activity$interval), intervalsteps, main = "Plot of average steps in 
     ylab = "Average Steps in an interval", xlab = "Interval of the day", type = "l")
 ```
 
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3.png) 
+![plot of chunk DailyActivity](figures/Plot_2_fromChunk_DailyActivity.png) 
 
 ```r
 which(intervalsteps == max(intervalsteps), arr.ind = TRUE)
@@ -85,6 +85,14 @@ We will use the mice package to impute missing values under the step column.The 
 ```r
 set.seed(144)
 library(mice)
+```
+
+```
+## Loading required package: Rcpp
+## mice 2.21 2014-02-05
+```
+
+```r
 activityimp = activity
 activityimp$date = as.numeric(activityimp$date)
 activityimp = complete(mice(activityimp))
@@ -108,7 +116,7 @@ totalstepsimp = tapply(activityimp$steps, activityimp$date, sum)
 hist(totalstepsimp, main = "Histogram of total steps in a day", xlab = "Total Steps in a Day")
 ```
 
-![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6.png) 
+![plot of chunk TotalStepswithCompleteData](figures/Plot_3_fromChunk_TotalStepswithCompleteData.png) 
 
 ```r
 mean(totalstepsimp, na.rm = T)
@@ -147,10 +155,10 @@ tapply(a$avsteps, as.factor(a$weekday), mean)
 ```r
 library(lattice)
 xyplot(avsteps ~ interval | weekday, data = a, type = "l", xlab = "Interval", 
-    ylab = "No of Steps (Avg)")
+    ylab = "No of Steps (Avg)", main = "Plot of avg. steps in an interval - Weekdays vs Weekends")
 ```
 
-![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7.png) 
+![plot of chunk AvgStepsWeekends_Weekdays](figures/Plot_4_fromChunk_AvgStepsWeekends_Weekdays.png) 
 
 ### Conclusion
 The monitoring and analysis of activities gives us useful insights into the behavour of individuals and could give us further insights when analyzed across different professions.
