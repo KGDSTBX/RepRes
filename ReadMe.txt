@@ -1,6 +1,6 @@
 Assignment 1 - Reproducible Research
 
-the RMD,MD and HTML documents are named as PA1_template
+Please refer PA1_template.md for the analysis report, code and plots
 
-Please refer figures directory to review the plots required for this assignment
+The plots required for this assignment are also available in the figures subdirectory in this repository
 
